@@ -71,6 +71,14 @@ import ExitDoor from "./ExitDoor.vue";
       :rot="180"
       :y="200"
     />
+
+    <PortalTeleporter
+        label="Enter the ocean"
+        position="-2.033 1.5 -3.99"
+        rotation="0 0 0"
+        :rot="180"
+        :y="300"
+      />
   </a-entity>
 
   <ExitDoor />

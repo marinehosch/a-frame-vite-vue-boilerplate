@@ -5,6 +5,7 @@
   import TheMainRoom from './TheMainRoom.vue';
   import TheLifeCubeRoom from './TheLifeCubeRoom.vue';
   import ThePhysicRoom from './ThePhysicRoom.vue';
+  import TheOceanRoom from './TheOceanRoom.vue';
 
   defineProps({
     scale: Number,
@@ -46,20 +47,39 @@
         Model author: https://sketchfab.com/tekuto1s (tekuto1s)
         Model license: CC BY 4.0 ( https://creativecommons.org/licenses/by/4.0/ )
       -->
-      <a-asset-item id="physic-room" src="assets/3d_gallery_for_vr_projects.glb"></a-asset-item>
+      <!-- <a-asset-item id="physic-room" src="assets/3d_gallery_for_vr_projects.glb"></a-asset-item> -->
       <a-asset-item id="sound-1" response-type="arraybuffer" src="assets/sound1.mp3" preload="auto"></a-asset-item>
-      <img id="room-physic-out-texture" :src="`assets/main-room-from-physic-room.png`">
-      <img id="room-gol-out-texture" :src="`assets/main-room-from-gol-room.png`">
-      <img id="room-physic-texture" :src="`assets/physicRoom.png`">
+      <!-- <img id="room-physic-out-texture" :src="`assets/main-room-from-physic-room.png`"> -->
+      <!-- <img id="room-gol-out-texture" :src="`assets/main-room-from-gol-room.png`"> -->
+      <!-- <img id="room-physic-texture" :src="`assets/physicRoom.png`"> -->
+      <a-asset-item id="scene1" src="assets/floating_island.glb"></a-asset-item>
+      <a-asset-item id="troll1" src="assets/troll1.glb"></a-asset-item>
+      <a-asset-item id="harp" src="assets/harp.ogg" preload="auto" response-type="arraybuffer"></a-asset-item>
+      <a-asset-item id="grunts" src="assets/littlegrunts.ogg" preload="auto" response-type="arraybuffer"></a-asset-item>
+      <a-asset-item id="axe-blue" src="assets/blue_axe.glb"> </a-asset-item>
+
     </a-assets>
 
     <template v-if="allAssetsLoaded">
-      <TheMainRoom :scale="scale" />
-      <TheLifeCubeRoom />
-      <ThePhysicRoom />
+      <!-- <TheMainRoom :scale="scale" /> -->
+      <!-- <a-plane
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="4"
+        height="4"
+        color="white"
+        opacity="0.5"
+      ></a-plane>
+      <a-box
+        position="0 1 -5"
+        height="2"
+        color="red"
+      ></a-box> -->
+      <TheOceanRoom />
     </template>
 
-    <TheCameraRig />
+ <!-- mis pour arriver direct dans TheOceanRoom -->
+    <TheCameraRig position="1 300 -1" rotation="0 90 0"/>
 
   </a-scene>
 </template>
