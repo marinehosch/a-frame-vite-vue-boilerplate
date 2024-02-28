@@ -57,6 +57,10 @@
       <a-asset-item id="harp" src="assets/harp.ogg" preload="auto" response-type="arraybuffer"></a-asset-item>
       <a-asset-item id="grunts" src="assets/littlegrunts.ogg" preload="auto" response-type="arraybuffer"></a-asset-item>
       <a-asset-item id="axe-blue" src="assets/blue_axe.glb"> </a-asset-item>
+      <a-asset-item id="rocks" src="assets/rocks.glb"> </a-asset-item>
+      <a-asset-item id="crystal" src="assets/crystal.glb"> </a-asset-item>
+      <a-asset-item id="basket" src="assets/basket.glb"> </a-asset-item>
+
 
     </a-assets>
 

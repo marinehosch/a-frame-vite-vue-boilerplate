@@ -95,6 +95,14 @@ function dropTheThing(evt) {
           ></a-entity>
       </a-entity>
 
+      <!-- <a-entity 
+        gtlf-model="#crystal"
+        position="0.5 6.5 2.5"
+        scale="0.1 0.1 0.1"
+        rotation="0 90 0">
+      </a-entity> -->
+
+
       <a-entity
         gltf-model="#axe-blue"
         position="0.5 6.5 2.5"
@@ -102,15 +110,58 @@ function dropTheThing(evt) {
         rotation="0 90 0"
         visible="false"
       ></a-entity>
-  
-          <a-box
-        id="box-1-grabbable"
-        color="red"
-        scale="0.3 0.3 0.3"
-        position="5.17731 7 -2"        
+
+      <a-entity id="crystal"
+          gltf-model="#crystal"
+          position="3 4 4"
+          scale="0.005 0.005 0.005"
+          rotation="0 90 0"
+          visible="true"
+          clickable
+          @click="evt => grabTheThing(evt)"
+        ></a-entity>
+
+        <a-entity id="rock"
+            gltf-model="#rocks"
+            position="4 4 4"
+            scale="0.05 0.05 0.05"
+            rotation="0 90 0"
+            visible="true"
+            clickable
+            @click="evt => grabTheThing(evt)"
+          ></a-entity>
+
+          <a-entity id="basket"
+            gltf-model="#basket"
+            bind-position="target: #dummy-hand-right"
+            bind-rotation="target: #dummy-hand-right; convertToLocal: true"
+            scale="0.6 0.6 0.6"
+            position="0.3 -0.4 -0.5"  
+         ></a-entity>  
+
+         <a-entity
+        id="drop-zone-right"
+        geometry="primitive: sphere; phiLength: 180; radius: 0.5; thetaLength: 90;"
+        material="color: grey; side: double"
+        position="0.67 5.7 1.8"
+        rotation="90 0 45"
+        visible="true"
         clickable
-        @click="evt => grabTheThing(evt)"
-      ></a-box>
+        @click="evt => dropTheThing(evt)"
+        look-at
+    ></a-entity>
+    <a-entity
+        id="drop-zone-left"
+          geometry="primitive: sphere; phiLength: 180; radius: 0.5; thetaLength: 90;"
+          material="color: green; side: double"
+          position="0.8 5.9 1.8"
+          rotation="90 0 45"
+          visible="true"
+          clickable
+          @click="evt => dropTheThing(evt)"
+          look-at
+      ></a-entity>
+
       
       <PortalTeleporter id="portal-1"
         label="go"

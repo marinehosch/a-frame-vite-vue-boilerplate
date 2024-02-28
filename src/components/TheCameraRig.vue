@@ -38,6 +38,8 @@
             id="dummy-hand-left"
             position="-0.3 -0.4 -0.5"
           ></a-entity>
+
+  
       </a-entity>
 
       <a-entity
