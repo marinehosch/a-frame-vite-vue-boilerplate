@@ -7,67 +7,66 @@ import { copyPosition, copyRotation } from '../utils/aframe.js';
 import '../aframe/bind-rotation.js';
 import '../aframe/bind-position.js';
 import '../aframe/simple-grab.js';
+import { ref } from 'vue';
 
-const text = "toto"
+let text = ref("Toto");
+
 //logique du jeu : drop 2items pour changer le texte du troll
 //length tableau items
 //si tableau items.length = 2 alors changer le texte du troll
 //si tableau items.length = 0 alors remettre le texte initial
 //si tableau items.length = 1 alors remettre le texte initial
+// récupérer l'emi du drop des items
+//si drop alors push dans le tableau items
+//si drop alors changer le texte du troll
 
-const droppedItems = []
-const items = document.querySelectorAll('.simple-grab')
-console.log(items)
+const dropzoneEl = document.getElementById('dropzone');
+window.addEventListener('DOMContentLoaded', (event) => {
+  dropzoneEl.addEventListener('dropped', this.handleDropped);
+})
+function handleDropped(e) {
+  console.log('dropped', e.detail)
+  if (e.detail.length === 2) {
+    console.log('2 items dropped')
+    text.value = "Merci"
+  }
+}
+let itemsDropped = 0
+const dropZone = document.getElementById('dropzone');
+window.addEventListener('DOMContentLoaded', (event) => {
+dropZone.addEventListener('dropped', (e) => {
+  if (itemsDropped === 2) {
+    console.log('itemsDropped', itemsDropped)
+    text.value = "Merci"
+    const axe = document.getElementById('axe-blue')
+    axe.setAttribute('visible', 'true')
+  }
+})
+})
 
-//grab component
-// function grabTheThing(evt) {
-//   // if something already grabbed, switch it
-//   const el = evt.target;
-//   const grabbedEl = document.querySelector('[data-grabbed]');
-//   if (grabbedEl) {
-//     grabbedEl.removeAttribute('bind-position');
-//     grabbedEl.removeAttribute('bind-rotation');
-//     copyPosition(el, grabbedEl);
-//     copyRotation(el, grabbedEl);
-//     delete grabbedEl.dataset.grabbed;
-//     delete grabbedEl.dataset.dropped;
-//     if (el.dataset.dropped) {
-//       grabbedEl.dataset.dropped = el.dataset.dropped;
-//     }
+//si text.value = "Merci" alors afficher l'axe
+
+// const axe = document.getElementById('axe-blue')
+// axe.setAttribute('visible', 'true')
+
+//fonction pour vérifier si 2éléments dropped dans la zone de drop
+
+// const dropZone = document.getElementById('dropzone');
+// dropZone.addEventListener('dropped', (e) => {
+//   console.log('dropped', e.detail)
+// si 2 éléments dropped :
+//   if (e.detail.length === 2) {
+//     console.log('2 items dropped')
+//     text.value = "Merci"
+// rendre la hache visible
+//     const axe = document.getElementById('axe-blue')
+//     axe.setAttribute('visible', 'true')
+//   }
+// })
+
 //   }
 
-//   if (el.sceneEl.is('vr-mode')) {
-//     el.setAttribute('bind-position', 'target: #hand-right');
-//     el.setAttribute('bind-rotation', 'target: #hand-right; convertToLocal: true');
-//   } else {
-//     el.setAttribute('bind-position', 'target: #dummy-hand-right');
-//     el.setAttribute('bind-rotation', 'target: #dummy-hand-right; convertToLocal: true');
-//   }
-//   el.dataset.grabbed = true;
-//   delete el.dataset.dropped;
-// }
-
-// function dropTheThing(evt) {
-//   const grabbedEl = document.querySelector('[data-grabbed]');
-//   // if nothing grabbed, return
-//   if (!grabbedEl) return;
-
-//   //drop it
-//   grabbedEl.removeAttribute('bind-position');
-//   grabbedEl.removeAttribute('bind-rotation');
-//   copyPosition(evt.target, grabbedEl);
-//   copyRotation(evt.target, grabbedEl);
-//   delete grabbedEl.dataset.grabbed;
-
-//   const dropZoneId = evt.target.id;
-//   // if something was in the drop zone, grab it
-//   const elInDropZone = document.querySelector(`[data-dropped="${dropZoneId}"]`);
-//   if (elInDropZone) {
-//     grabTheThing({ target: elInDropZone });
-//   };
-
-//   grabbedEl.dataset.dropped = dropZoneId;
-// }
+// })
 
 
 </script>
@@ -141,7 +140,7 @@ console.log(items)
          ></a-entity>  
 
          <a-entity
-        id="drop-zone-right"
+        id="dropzone"
         geometry="primitive: sphere; phiLength: 180; radius: 0.5; thetaLength: 90;"
         material="color: grey; side: double"
         position="0.67 5.7 1.8"
