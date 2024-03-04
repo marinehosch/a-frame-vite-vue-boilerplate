@@ -148,7 +148,6 @@ function dropTheThing(evt) {
         visible="true"
         clickable
         @click="evt => dropTheThing(evt)"
-        look-at
     ></a-entity>
     <a-entity
         id="drop-zone-left"
@@ -159,8 +158,17 @@ function dropTheThing(evt) {
           visible="true"
           clickable
           @click="evt => dropTheThing(evt)"
-          look-at
       ></a-entity>
+
+      <a-entity id="sword"
+          gltf-model="#sword"
+          position="21 12 8.5"
+          scale="1 1 1"
+          rotation="0 90 0"
+          visible="true"
+          clickable
+          @click="evt => grabTheThing(evt)"
+          ></a-entity>
 
       
       <PortalTeleporter id="portal-1"

@@ -60,6 +60,7 @@
       <a-asset-item id="rocks" src="assets/rocks.glb"> </a-asset-item>
       <a-asset-item id="crystal" src="assets/crystal.glb"> </a-asset-item>
       <a-asset-item id="basket" src="assets/basket.glb"> </a-asset-item>
+      <a-asset-item id="sword" src="assets/sword.glb"> </a-asset-item>
 
 
     </a-assets>
