@@ -6,60 +6,68 @@ import '../aframe/look-at.js';
 import { copyPosition, copyRotation } from '../utils/aframe.js';
 import '../aframe/bind-rotation.js';
 import '../aframe/bind-position.js';
+import '../aframe/simple-grab.js';
 
 const text = "toto"
-//logique du jeu : grab un item pour changer le texte du troll
-//si tel item grab alors le texte evolue
+//logique du jeu : drop 2items pour changer le texte du troll
+//length tableau items
+//si tableau items.length = 2 alors changer le texte du troll
+//si tableau items.length = 0 alors remettre le texte initial
+//si tableau items.length = 1 alors remettre le texte initial
+
+const droppedItems = []
+const items = document.querySelectorAll('.simple-grab')
+console.log(items)
 
 //grab component
-function grabTheThing(evt) {
-  // if something already grabbed, switch it
-  const el = evt.target;
-  const grabbedEl = document.querySelector('[data-grabbed]');
-  if (grabbedEl) {
-    grabbedEl.removeAttribute('bind-position');
-    grabbedEl.removeAttribute('bind-rotation');
-    copyPosition(el, grabbedEl);
-    copyRotation(el, grabbedEl);
-    delete grabbedEl.dataset.grabbed;
-    delete grabbedEl.dataset.dropped;
-    if (el.dataset.dropped) {
-      grabbedEl.dataset.dropped = el.dataset.dropped;
-    }
-  }
+// function grabTheThing(evt) {
+//   // if something already grabbed, switch it
+//   const el = evt.target;
+//   const grabbedEl = document.querySelector('[data-grabbed]');
+//   if (grabbedEl) {
+//     grabbedEl.removeAttribute('bind-position');
+//     grabbedEl.removeAttribute('bind-rotation');
+//     copyPosition(el, grabbedEl);
+//     copyRotation(el, grabbedEl);
+//     delete grabbedEl.dataset.grabbed;
+//     delete grabbedEl.dataset.dropped;
+//     if (el.dataset.dropped) {
+//       grabbedEl.dataset.dropped = el.dataset.dropped;
+//     }
+//   }
 
-  if (el.sceneEl.is('vr-mode')) {
-    el.setAttribute('bind-position', 'target: #hand-right');
-    el.setAttribute('bind-rotation', 'target: #hand-right; convertToLocal: true');
-  } else {
-    el.setAttribute('bind-position', 'target: #dummy-hand-right');
-    el.setAttribute('bind-rotation', 'target: #dummy-hand-right; convertToLocal: true');
-  }
-  el.dataset.grabbed = true;
-  delete el.dataset.dropped;
-}
+//   if (el.sceneEl.is('vr-mode')) {
+//     el.setAttribute('bind-position', 'target: #hand-right');
+//     el.setAttribute('bind-rotation', 'target: #hand-right; convertToLocal: true');
+//   } else {
+//     el.setAttribute('bind-position', 'target: #dummy-hand-right');
+//     el.setAttribute('bind-rotation', 'target: #dummy-hand-right; convertToLocal: true');
+//   }
+//   el.dataset.grabbed = true;
+//   delete el.dataset.dropped;
+// }
 
-function dropTheThing(evt) {
-  const grabbedEl = document.querySelector('[data-grabbed]');
-  // if nothing grabbed, return
-  if (!grabbedEl) return;
+// function dropTheThing(evt) {
+//   const grabbedEl = document.querySelector('[data-grabbed]');
+//   // if nothing grabbed, return
+//   if (!grabbedEl) return;
 
-  //drop it
-  grabbedEl.removeAttribute('bind-position');
-  grabbedEl.removeAttribute('bind-rotation');
-  copyPosition(evt.target, grabbedEl);
-  copyRotation(evt.target, grabbedEl);
-  delete grabbedEl.dataset.grabbed;
+//   //drop it
+//   grabbedEl.removeAttribute('bind-position');
+//   grabbedEl.removeAttribute('bind-rotation');
+//   copyPosition(evt.target, grabbedEl);
+//   copyRotation(evt.target, grabbedEl);
+//   delete grabbedEl.dataset.grabbed;
 
-  const dropZoneId = evt.target.id;
-  // if something was in the drop zone, grab it
-  const elInDropZone = document.querySelector(`[data-dropped="${dropZoneId}"]`);
-  if (elInDropZone) {
-    grabTheThing({ target: elInDropZone });
-  };
+//   const dropZoneId = evt.target.id;
+//   // if something was in the drop zone, grab it
+//   const elInDropZone = document.querySelector(`[data-dropped="${dropZoneId}"]`);
+//   if (elInDropZone) {
+//     grabTheThing({ target: elInDropZone });
+//   };
 
-  grabbedEl.dataset.dropped = dropZoneId;
-}
+//   grabbedEl.dataset.dropped = dropZoneId;
+// }
 
 
 </script>
@@ -95,13 +103,6 @@ function dropTheThing(evt) {
           ></a-entity>
       </a-entity>
 
-      <!-- <a-entity 
-        gtlf-model="#crystal"
-        position="0.5 6.5 2.5"
-        scale="0.1 0.1 0.1"
-        rotation="0 90 0">
-      </a-entity> -->
-
 
       <a-entity
         gltf-model="#axe-blue"
@@ -118,7 +119,7 @@ function dropTheThing(evt) {
           rotation="0 90 0"
           visible="true"
           clickable
-          @click="evt => grabTheThing(evt)"
+          simple-grab
         ></a-entity>
 
         <a-entity id="rock"
@@ -128,7 +129,7 @@ function dropTheThing(evt) {
             rotation="0 90 0"
             visible="true"
             clickable
-            @click="evt => grabTheThing(evt)"
+            simple-grab
           ></a-entity>
 
           <a-entity id="basket"
@@ -147,18 +148,8 @@ function dropTheThing(evt) {
         rotation="90 0 45"
         visible="true"
         clickable
-        @click="evt => dropTheThing(evt)"
-    ></a-entity>
-    <a-entity
-        id="drop-zone-left"
-          geometry="primitive: sphere; phiLength: 180; radius: 0.5; thetaLength: 90;"
-          material="color: green; side: double"
-          position="0.8 5.9 1.8"
-          rotation="90 0 45"
-          visible="true"
-          clickable
-          @click="evt => dropTheThing(evt)"
-      ></a-entity>
+        simple-grab-drop-zone
+          ></a-entity>
 
       <a-entity id="sword"
           gltf-model="#sword"
@@ -167,7 +158,7 @@ function dropTheThing(evt) {
           rotation="0 90 0"
           visible="true"
           clickable
-          @click="evt => grabTheThing(evt)"
+          simple-grab
           ></a-entity>
 
       
@@ -190,13 +181,5 @@ function dropTheThing(evt) {
         :y="300"
       />
     </a-entity>  
-
-        <!-- </a-ocean> -->
-            <!-- <PortalTeleporter
-          label="Back to main room"
-          material="src: #room-physic-out-texture"
-          position="0 2.1 4.12"
-          rotation="0 180 0"
-          :rot="90"/> -->
 
 </template>
