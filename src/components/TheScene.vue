@@ -61,6 +61,8 @@
       <a-asset-item id="crystal" src="assets/crystal.glb"> </a-asset-item>
       <a-asset-item id="basket" src="assets/basket.glb"> </a-asset-item>
       <a-asset-item id="sword" src="assets/sword.glb"> </a-asset-item>
+      <a-asset-item id="troll2" src="assets/troll2.glb"> </a-asset-item>
+      <a-asset-item id="troll-heh" src="assets/troll-heh.mp3"> </a-asset-item>
 
 
     </a-assets>

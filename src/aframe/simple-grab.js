@@ -125,13 +125,6 @@ AFRAME.registerComponent("simple-grab-drop-zone", {
     this.onEvent = this.onEvent.bind(this);
     this.droppedEl = null;
     this.el.addEventListener(this.data.event, this.onEvent);
-    this.numDropped = 0;
-    this.el.addEventListener("dropped", (evt) => {
-      this.numDropped++;
-      console.log("dropped", this.numDropped);
-      //   console.log("dropped", evt);
-    });
-    // this.el.addEventListener(this.data.event, this.onEvent);
   },
 
   onEvent: function (evt) {
@@ -152,6 +145,13 @@ AFRAME.registerComponent("simple-grab-drop-zone", {
       copyPosition(this.el, currentGrab);
       copyRotation(this.el, currentGrab, true);
       if (this.data.dropOnly) currentGrab.removeAttribute("simple-grab");
+
+      //émettre l'événement itemdropped
+      const droppedItemId = currentGrab.getAttribute("id");
+      const itemDropEvent = new CustomEvent("ITEM_DROPPED_EVENT", {
+        detail: droppedItemId,
+      });
+      document.dispatchEvent(itemDropEvent);
     }
 
     // if something was already in there, put it in the hand
@@ -163,9 +163,6 @@ AFRAME.registerComponent("simple-grab-drop-zone", {
     // }
 
     if (currentGrab) this.droppedEl = currentGrab;
-
-    //écoute du drop avec un custom event
-    this.el.emit("dropped", { numDropped: this.numDropped });
   },
 
   remove: function () {

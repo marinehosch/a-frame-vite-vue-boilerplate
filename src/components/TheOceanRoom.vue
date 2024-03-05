@@ -9,8 +9,6 @@ import '../aframe/bind-position.js';
 import '../aframe/simple-grab.js';
 import { ref } from 'vue';
 
-let text = ref("Toto");
-
 //logique du jeu : drop 2items pour changer le texte du troll
 //length tableau items
 //si tableau items.length = 2 alors changer le texte du troll
@@ -20,54 +18,29 @@ let text = ref("Toto");
 //si drop alors push dans le tableau items
 //si drop alors changer le texte du troll
 
-const dropzoneEl = document.getElementById('dropzone');
-window.addEventListener('DOMContentLoaded', (event) => {
-  dropzoneEl.addEventListener('dropped', this.handleDropped);
-})
-function handleDropped(e) {
-  console.log('dropped', e.detail)
-  if (e.detail.length === 2) {
-    console.log('2 items dropped')
-    text.value = "Merci"
-  }
-}
-let itemsDropped = 0
-const dropZone = document.getElementById('dropzone');
-window.addEventListener('DOMContentLoaded', (event) => {
-dropZone.addEventListener('dropped', (e) => {
-  if (itemsDropped === 2) {
-    console.log('itemsDropped', itemsDropped)
-    text.value = "Merci"
-    const axe = document.getElementById('axe-blue')
-    axe.setAttribute('visible', 'true')
-  }
-})
-})
+let text = ref();
+let text2 = ref("Congratulations, you have completed your mission, here your sword! Take it and be brave!");
 
-//si text.value = "Merci" alors afficher l'axe
+const droppedItems = new Set();
 
-// const axe = document.getElementById('axe-blue')
-// axe.setAttribute('visible', 'true')
-
-//fonction pour vérifier si 2éléments dropped dans la zone de drop
-
-// const dropZone = document.getElementById('dropzone');
-// dropZone.addEventListener('dropped', (e) => {
-//   console.log('dropped', e.detail)
-// si 2 éléments dropped :
-//   if (e.detail.length === 2) {
-//     console.log('2 items dropped')
-//     text.value = "Merci"
-// rendre la hache visible
-//     const axe = document.getElementById('axe-blue')
-//     axe.setAttribute('visible', 'true')
-//   }
-// })
-
-//   }
-
-// })
-
+document
+  .addEventListener("ITEM_DROPPED_EVENT", function (event) {
+    const pnj = document.getElementById("pnj");
+    const droppedItemId = event.detail;
+    droppedItems.add(droppedItemId);
+    console.log("Item dropped:", droppedItemId);
+    //changement de la valeur text en fonction des items droppés
+    if (droppedItems.has("crystal") && droppedItems.has("rock")) {
+      pnj.setAttribute("spawn-text", "value", "Good job! You have dropped two items! Here is your reward! Take the axe and go give to my friend up there!");
+      document.getElementById("axe-blue").setAttribute("visible", "true");
+    }
+    else if (droppedItems.has("crystal") || droppedItems.has("rock")) {
+      text.value = "Good job! You have dropped an item! Let's find the second one!";
+    }
+    else if (droppedItems.size === 0) {
+      text.value = "Hello, I'm a troll! Drop me two items to get a reward!";
+    }
+  });
 
 </script>
 
@@ -83,7 +56,7 @@ dropZone.addEventListener('dropped', (e) => {
         ></a-entity> -->
         <!-- <a-ocean id="ocean" color="green" position="0 300 0"  width="100" depth="100" density="30" speed="2" opacity="0.8"> -->
         
-    <a-entity gltf-model="#scene1" position="-3 298.5 -1" scale="0.4 0.4 0.4" rotation="180 180 180" poolSize="">
+    <a-entity gltf-model="#scene1" position="-3 298.5 -1" scale="0.4 0.4 0.4" rotation="180 180 180" poolSize="2">
         <a-entity sound="src: #harp; volume:1; loop: true; autoplay: true; positional: false"></a-entity>      
 
       <a-entity
@@ -91,7 +64,7 @@ dropZone.addEventListener('dropped', (e) => {
         position="-0.31192 5.60267 2.60866" 
         emit-when-near="distance: 3"
         :spawn-text="`value: ${text}`"
-        sound="src: #grunts; volume: 2; loop: true; on: click"
+        sound="src: #grunts; volume: 3; loop: true; on: click; poolSize: 3"
         look-at
         >      
           <a-entity
@@ -103,12 +76,14 @@ dropZone.addEventListener('dropped', (e) => {
       </a-entity>
 
 
-      <a-entity
+      <a-entity id="axe-blue"
         gltf-model="#axe-blue"
         position="0.5 6.5 2.5"
         scale="1 1 1"
         rotation="0 90 0"
         visible="false"
+        clickable
+        simple-grab
       ></a-entity>
 
       <a-entity id="crystal"
@@ -129,15 +104,7 @@ dropZone.addEventListener('dropped', (e) => {
             visible="true"
             clickable
             simple-grab
-          ></a-entity>
-
-          <a-entity id="basket"
-            gltf-model="#basket"
-            bind-position="target: #dummy-hand-right"
-            bind-rotation="target: #dummy-hand-right; convertToLocal: true"
-            scale="0.6 0.6 0.6"
-            position="0.3 -0.4 -0.5"  
-         ></a-entity>  
+          ></a-entity> 
 
          <a-entity
         id="dropzone"
@@ -155,7 +122,7 @@ dropZone.addEventListener('dropped', (e) => {
           position="21 12 8.5"
           scale="1 1 1"
           rotation="0 90 0"
-          visible="true"
+          visible="false"
           clickable
           simple-grab
           ></a-entity>
@@ -166,7 +133,7 @@ dropZone.addEventListener('dropped', (e) => {
         life-like-automaton="resolution: 256;"
         position="10.591 7 3.474"
         rotation="0 -110 0"
-        :rot="90"
+        :rot="145"
         :y="302.5"
         :x="7"
         :z="1"
@@ -176,9 +143,29 @@ dropZone.addEventListener('dropped', (e) => {
         life-like-automaton="resolution: 256;"
         position="19.873 13.196 8"
         rotation="0 70 0"
-        :rot="45"
+        :rot="90"
         :y="300"
       />
+   <a-entity
+          id="pnj2"
+          position="21.96 12.5 11.622" 
+          emit-when-near="distance: 3"
+          sound="src: #grunts; volume: 2; loop: true; on: click; poolSize: 2"
+          :spawn-text="`value: ${{text}}`"
+          
+          look-at
+          > 
+      <a-entity
+        id="troll2"
+        animation-mixer
+        gltf-model="#troll2"
+        position=""
+        scale="60 60 60"
+        rotation="-0.83 0 5.9"
+        visible="true"
+        ></a-entity>
+   </a-entity>
+
     </a-entity>  
 
 </template>

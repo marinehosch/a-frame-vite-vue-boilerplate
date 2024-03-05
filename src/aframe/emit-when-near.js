@@ -35,7 +35,7 @@ AFRAME.registerComponent("emit-when-near", {
         { collidingEntity: this.el },
         false
       );
-      // this.el.components.sound.playSound();
+      this.el.components.sound.playSound();
     } else {
       if (!this.emiting) return;
       this.el.emit(
@@ -49,7 +49,7 @@ AFRAME.registerComponent("emit-when-near", {
         false
       );
       this.emiting = false;
-      // this.sound.components.pauseSound();
+      this.el.components.sound.stopSound();
     }
   },
 });
