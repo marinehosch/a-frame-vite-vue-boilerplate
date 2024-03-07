@@ -4,7 +4,6 @@
   import TheCameraRig from './TheCameraRig.vue';
   import TheMainRoom from './TheMainRoom.vue';
   import TheLifeCubeRoom from './TheLifeCubeRoom.vue';
-  import ThePhysicRoom from './ThePhysicRoom.vue';
   import TheOceanRoom from './TheOceanRoom.vue';
 
   defineProps({
@@ -59,10 +58,14 @@
       <a-asset-item id="axe-blue" src="assets/blue_axe.glb"> </a-asset-item>
       <a-asset-item id="rocks" src="assets/rocks.glb"> </a-asset-item>
       <a-asset-item id="crystal" src="assets/crystal.glb"> </a-asset-item>
-      <a-asset-item id="basket" src="assets/basket.glb"> </a-asset-item>
       <a-asset-item id="sword" src="assets/sword.glb"> </a-asset-item>
       <a-asset-item id="troll2" src="assets/troll2.glb"> </a-asset-item>
-      <a-asset-item id="troll-heh" src="assets/troll-heh.mp3"> </a-asset-item>
+      <a-asset-item id="drop" src="assets/enchant.ogg" preload="auto" response-type="arraybuffer"> </a-asset-item>
+      <a-asset-item id="trollheh" src="assets/troll-heh.mp3" preload="auto" response-type="arraybuffer"> </a-asset-item>
+      <a-asset-item id="get" src="assets/blessing.ogg" preload="auto" response-type="arraybuffer"> </a-asset-item>
+      <a-asset-item id="red-sword" src="assets/red-sword.glb"> </a-asset-item>
+
+
 
 
     </a-assets>
@@ -86,7 +89,7 @@
     </template>
 
  <!-- mis pour arriver direct dans TheOceanRoom -->
-    <TheCameraRig position="1 300 -1" rotation="0 90 0"/>
+    <TheCameraRig position="-0.5 300 -1" rotation="0 90 0"/>
 
   </a-scene>
 </template>

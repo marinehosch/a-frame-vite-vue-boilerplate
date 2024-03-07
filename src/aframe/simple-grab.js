@@ -94,6 +94,7 @@ AFRAME.registerComponent("simple-grab", {
     }
 
     this.system.setCurrentGrab(this.grabbedBy, this.el);
+    this.el.emit("GRAB");
     if (this.actualDropZone) {
       if (!currentGrab) {
         this.actualDropZone.components["simple-grab-drop-zone"].droppedEl =
@@ -135,7 +136,7 @@ AFRAME.registerComponent("simple-grab-drop-zone", {
     const currentGrab = this.system.getCurrentGrab(this.grabbedBy);
 
     // disallow dropping if the drop zone is already occupied
-    // if (this.data.dropOnly && this.droppedEl !== null) return;
+    if (this.data.dropOnly && this.droppedEl == 2) return;
 
     // drop the current grab
     if (currentGrab) {
@@ -152,6 +153,7 @@ AFRAME.registerComponent("simple-grab-drop-zone", {
         detail: droppedItemId,
       });
       document.dispatchEvent(itemDropEvent);
+      this.el.emit("ITEM_DROPPED_EVENT");
     }
 
     // if something was already in there, put it in the hand

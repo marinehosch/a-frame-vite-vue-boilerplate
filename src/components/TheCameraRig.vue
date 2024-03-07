@@ -67,14 +67,6 @@
         raycaster="far: 4; objects: [clickable]; showLine: true;"
         physx-grab
       >
-      <a-entity 
-        id="basket" 
-        gltf-model="#basket"
-        scale="0.6 0.6 0.6"
-        position="0.3 -0.4 -0.5"  
-             >
-      </a-entity> 
-      
         <a-sphere id="hand-right-collider"
           radius="0.02"
           visible="false"
