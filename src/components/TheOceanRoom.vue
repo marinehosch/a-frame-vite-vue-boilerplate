@@ -130,8 +130,8 @@ document
     ></a-entity>
 
       <a-entity id="sword-el"
-      position="20.851 12.504 10.543"
-      rotation="48.5 -175 -17.5"
+      position="20.851 12.44621 10.543"
+      rotation="25 -29.152092616256287 42.16453710147242"
       scale="0.5 0.5 0.5"
       gltf-model="#red-sword"
       clickable
@@ -176,8 +176,44 @@ document
         position=""
         scale="60 60 60"
         rotation="-0.83 0 5.9"
-      ></a-entity>
+      ></a-entity>    
     </a-entity>
+
+    <a-entity
+      id="island2"
+      gltf-model="#second-island"
+      position="-6.803 -6.280 -48.569"
+      rotation="180 180 180"
+      scale="0.4 0.4 0.4"
+    ></a-entity>
+
+    <a-entity
+        id="dragon"
+        gltf-model="#skeleton_dragon"
+        animation-mixer
+        position="0 0.203 -48.646"
+        scale="50 50 50"
+        rotation="0.208 -0.742 -2.188"
+        visible="true"
+      ></a-entity>
+
+      <PortalTeleporter id="portal-3"
+      life-like-automaton="resolution: 256;"
+      position="1.071 6.5181 -9.755"
+      rotation="0 -9.845 0"
+      :rot="90"
+      :y="298"
+      :z="-7"
+
+    />
+
+    <PortalTeleporter id="portal-4"
+      life-like-automaton="resolution: 256;"
+      position="-2.752 3.50 -33.719"
+      rotation="0 180 0"
+      :rot="90"
+      :y="300"
+    />
   </a-entity>  
 
 </template>

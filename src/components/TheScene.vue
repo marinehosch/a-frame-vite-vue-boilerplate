@@ -64,6 +64,9 @@
       <a-asset-item id="trollheh" src="assets/troll-heh.mp3" preload="auto" response-type="arraybuffer"> </a-asset-item>
       <a-asset-item id="get" src="assets/blessing.ogg" preload="auto" response-type="arraybuffer"> </a-asset-item>
       <a-asset-item id="red-sword" src="assets/red-sword.glb"> </a-asset-item>
+      <a-asset-item id="skeleton_dragon" src="assets/skeleton_dragon.glb"> </a-asset-item>
+      <a-asset-item id="second-island" src="assets/second_island.glb"> </a-asset-item>
+
 
 
 
