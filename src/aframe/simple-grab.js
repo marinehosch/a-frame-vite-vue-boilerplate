@@ -100,6 +100,10 @@ AFRAME.registerComponent("simple-grab", {
         this.actualDropZone.components["simple-grab-drop-zone"].droppedEl =
           null;
       }
+      //si l'objet grab est sword-el, alors émettre l'événement swordgrabbed
+      if (this.el.getAttribute("id") == "sword-el") {
+        this.actualDropZone.emit("SWORD_GRABBED_EVENT");
+      }
       this.actualDropZone = null;
     }
   },

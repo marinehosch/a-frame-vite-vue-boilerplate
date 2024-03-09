@@ -48,46 +48,48 @@
       -->
       <!-- <a-asset-item id="physic-room" src="assets/3d_gallery_for_vr_projects.glb"></a-asset-item> -->
       <a-asset-item id="sound-1" response-type="arraybuffer" src="assets/sound1.mp3" preload="auto"></a-asset-item>
-      <!-- <img id="room-physic-out-texture" :src="`assets/main-room-from-physic-room.png`"> -->
-      <!-- <img id="room-gol-out-texture" :src="`assets/main-room-from-gol-room.png`"> -->
-      <!-- <img id="room-physic-texture" :src="`assets/physicRoom.png`"> -->
       <a-asset-item id="scene1" src="assets/floating_island.glb"></a-asset-item>
+      <!-- Floating_island.glb  : 
+        Title: "Floating island  [low poly] [VR]" 
+        Model Source: (https://skfb.ly/6WzW9) by 
+        Model author: pacoco  
+        Model Licence: licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/) -->
+
       <a-asset-item id="troll1" src="assets/troll1.glb"></a-asset-item>
+      <!-- "Trolls" (https://skfb.ly/orFVX) by adeshwalke is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
       <a-asset-item id="harp" src="assets/harp.ogg" preload="auto" response-type="arraybuffer"></a-asset-item>
       <a-asset-item id="grunts" src="assets/littlegrunts.ogg" preload="auto" response-type="arraybuffer"></a-asset-item>
       <a-asset-item id="axe-blue" src="assets/blue_axe.glb"> </a-asset-item>
+      <!-- "Dungeon Master's Axe" (https://skfb.ly/oOSSH) by Akilihin is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
       <a-asset-item id="rocks" src="assets/rocks.glb"> </a-asset-item>
+      <!-- "Simple Rocks - Low Poly" (https://skfb.ly/oKqSG) by Márcio Meireles is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
       <a-asset-item id="crystal" src="assets/crystal.glb"> </a-asset-item>
-      <a-asset-item id="sword" src="assets/sword.glb"> </a-asset-item>
+      <!-- "Low poly Crystal (game ready asset)" (https://skfb.ly/oMQNt) by Pixel Life is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+      
       <a-asset-item id="troll2" src="assets/troll2.glb"> </a-asset-item>
+      <!-- "Troll" (https://skfb.ly/oOPZO) by AlexTripiana is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+
       <a-asset-item id="drop" src="assets/enchant.ogg" preload="auto" response-type="arraybuffer"> </a-asset-item>
       <a-asset-item id="trollheh" src="assets/troll-heh.mp3" preload="auto" response-type="arraybuffer"> </a-asset-item>
       <a-asset-item id="get" src="assets/blessing.ogg" preload="auto" response-type="arraybuffer"> </a-asset-item>
+      
       <a-asset-item id="red-sword" src="assets/red-sword.glb"> </a-asset-item>
+      <!-- "Shattered crystal sword" (https://skfb.ly/ovwDV) by Julien Schoots is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). CC licence -->
+      
       <a-asset-item id="skeleton_dragon" src="assets/skeleton_dragon.glb"> </a-asset-item>
+      <!-- "Skeleton Dragon" (https://skfb.ly/oQz6n) by LivindorCreation is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+     
       <a-asset-item id="second-island" src="assets/second_island.glb"> </a-asset-item>
-
-
+      <!-- "Floating island" (https://skfb.ly/ouEVX) by Una.K.Carlstrøm is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
 
 
 
     </a-assets>
 
     <template v-if="allAssetsLoaded">
-      <!-- <TheMainRoom :scale="scale" /> -->
-      <!-- <a-plane
-        position="0 0 0"
-        rotation="-90 0 0"
-        width="4"
-        height="4"
-        color="white"
-        opacity="0.5"
-      ></a-plane>
-      <a-box
-        position="0 1 -5"
-        height="2"
-        color="red"
-      ></a-box> -->
       <TheOceanRoom />
     </template>
 

@@ -8,6 +8,7 @@ import '../aframe/bind-rotation.js';
 import '../aframe/bind-position.js';
 import '../aframe/simple-grab.js';
 import { ref } from 'vue';
+import '../aframe/dragon-event.js';
 
 let text = ref("Hello, I'm a troll! Drop me two items to get a reward!");
 let text2 = ref("Hello my friend! Have you something for me?");
@@ -49,11 +50,12 @@ document
       console.log(pnj2);
       console.log(pnj2.getAttribute("spawn-text"));
       document.getElementById("sword-el").setAttribute("visible", "true");
-      console.log(document.getElementById("sword-el"));
-      console.log(text2.value);
+      document.getElementById("axeblue").remove();
+      document.getElementById("portal-3").setAttribute("visible", "true");
       pnj1.setAttribute("spawn-text", "value", "Have you got your sword yet? no? Go quickly see my friend up there! He's a bit ugly but he's a nice one");
-    }
+    }    
   });
+
 </script>
 
 <template>
@@ -188,23 +190,38 @@ document
     ></a-entity>
 
     <a-entity
+      look-at="constrainVertically : true"
+      position="0 0.203 -48.646"
+      rotation="0.208 -0.742 -2.188"
+    >
+      <a-entity
         id="dragon"
         gltf-model="#skeleton_dragon"
         animation-mixer
-        position="0 0.203 -48.646"
         scale="50 50 50"
-        rotation="0.208 -0.742 -2.188"
         visible="true"
+        clickable
+        dragon-event
       ></a-entity>
+      <a-text id="victory-text"
+        value= "The deed is done! The dragon is dead! Thank you!"
+        position="-10 9.3 1.5" 
+        rotation="0 0 0"
+        scale="5 5 5" 
+        color="black"
+        visible="false">
+      </a-text>
+    </a-entity>
 
-      <PortalTeleporter id="portal-3"
+    <PortalTeleporter id="portal-3"
       life-like-automaton="resolution: 256;"
       position="1.071 6.5181 -9.755"
       rotation="0 -9.845 0"
-      :rot="90"
+      :rot="62"
       :y="298"
-      :z="-7"
-
+      :x="2"
+      :z="-16"
+      visible="false"
     />
 
     <PortalTeleporter id="portal-4"

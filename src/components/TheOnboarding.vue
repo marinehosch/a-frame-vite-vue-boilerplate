@@ -23,6 +23,15 @@
       <button v-if="loaded" @click="enterScene()">Enter scene</button>
       <div class="licences">
       <section>
+        <h3 class="prologue">Prologue</h3>
+        <p class="prologue">
+          Having befriended the <span id="peace">peaceful troll population</span> , they finally see you as an ally, they have entrusted you with the ultimate task. 
+          to destroy the<span id = "danger"> DRAGON MENACE! </span> Which has been terrorising their plane of existance for too long. 
+          Good luck, and may the force be with you.
+        </p>
+      </section>
+          
+      <section>
         <h4>Movement modes support</h4>
         <ul>
           <li>
@@ -87,6 +96,20 @@
 </template>
 
 <style scoped>
+
+#danger {
+  color: lightpink;
+}
+
+#peace {
+  color: lightgreen;
+}
+
+  .prologue {
+  font-size: 1.2rem;
+  color : lightskyblue;
+  }
+
   h1 { font-size: 1.5rem }
   a {
     color: #eee;
