@@ -46,12 +46,13 @@ document
     const droppedItemId2 = event.detail;
     console.log("Item dropped 2:", droppedItemId2);
     if (droppedItems.has("axeblue")) {
-      pnj2.setAttribute("spawn-text", "value", "Congratulations, you have completed your mission, here is your sword! Take it and be brave!");
+      pnj2.setAttribute("spawn-text", "value", "Congratulations, you have completed your first mission, here is your sword! Take it and be brave! The dragon is waiting for you!");
       console.log(pnj2);
       console.log(pnj2.getAttribute("spawn-text"));
       document.getElementById("sword-el").setAttribute("visible", "true");
       document.getElementById("axeblue").remove();
       document.getElementById("portal-3").setAttribute("visible", "true");
+      document.getElementById("island2").setAttribute("visible", "true");
       pnj1.setAttribute("spawn-text", "value", "Have you got your sword yet? no? Go quickly see my friend up there! He's a bit ugly but he's a nice one");
     }    
   });
@@ -128,19 +129,19 @@ document
       visible="false"
       clickable
       simple-grab-drop-zone
-      sound="src: #drop; volume: 2; on: ITEM_DROPPED_EVENT; poolSize: 3"
+      sound="src: #drop; volume: 2; on: ITEM_DROPPED_EVENT; poolSize: 4"
     ></a-entity>
 
-      <a-entity id="sword-el"
+    <a-entity id="sword-el"
       position="20.851 12.44621 10.543"
-      rotation="25 -29.152092616256287 42.16453710147242"
+      rotation="65 -55 72"
       scale="0.5 0.5 0.5"
       gltf-model="#red-sword"
       clickable
       simple-grab
       visible="false"
-      sound="src: #get; volume: 1; on: GRAB; poolSize: 3"
-      ></a-entity>
+      sound="src: #get; volume: 1; on: GRAB; poolSize: 4"
+    ></a-entity>
 
     <PortalTeleporter id="portal-1"
       label="go"
@@ -187,6 +188,7 @@ document
       position="-6.803 -6.280 -48.569"
       rotation="180 180 180"
       scale="0.4 0.4 0.4"
+      visible="false"
     ></a-entity>
 
     <a-entity
@@ -205,12 +207,19 @@ document
       ></a-entity>
       <a-text id="victory-text"
         value= "The deed is done! The dragon is dead! Thank you!"
-        position="-10 9.3 1.5" 
+        position="-10 9 1.3" 
         rotation="0 0 0"
         scale="5 5 5" 
         color="black"
         visible="false">
       </a-text>
+      <a-sound id="epicmusic" 
+        src="#epic-music" 
+        autoplay="false" 
+        loop="true" 
+        volume="1" 
+        positional="false">
+      </a-sound>
     </a-entity>
 
     <PortalTeleporter id="portal-3"

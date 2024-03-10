@@ -59,7 +59,11 @@
       <!-- "Trolls" (https://skfb.ly/orFVX) by adeshwalke is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
 
       <a-asset-item id="harp" src="assets/harp.ogg" preload="auto" response-type="arraybuffer"></a-asset-item>
+      <!-- Sound Effect from VWolfdog <a href="https://opengameart.org/content/soft-mysterious-harp-loop">OpenGameArt</a> -->
+
       <a-asset-item id="grunts" src="assets/littlegrunts.ogg" preload="auto" response-type="arraybuffer"></a-asset-item>
+      <!-- Sound Effect from crueltyinc <a href="https://opengameart.org/content/little-grunts">OpenGameArt</a> -->
+
       <a-asset-item id="axe-blue" src="assets/blue_axe.glb"> </a-asset-item>
       <!-- "Dungeon Master's Axe" (https://skfb.ly/oOSSH) by Akilihin is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
 
@@ -73,9 +77,14 @@
       <!-- "Troll" (https://skfb.ly/oOPZO) by AlexTripiana is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
 
       <a-asset-item id="drop" src="assets/enchant.ogg" preload="auto" response-type="arraybuffer"> </a-asset-item>
-      <a-asset-item id="trollheh" src="assets/troll-heh.mp3" preload="auto" response-type="arraybuffer"> </a-asset-item>
-      <a-asset-item id="get" src="assets/blessing.ogg" preload="auto" response-type="arraybuffer"> </a-asset-item>
+      <!-- Sound Effect from P0ss <a href="https://opengameart.org/content/spell-sounds-starter-pack">OpenGameArt</a> -->
       
+      <a-asset-item id="trollheh" src="assets/troll-heh.mp3" preload="auto" response-type="arraybuffer"> </a-asset-item>
+      <!-- Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=82650">Pixabay</a> -->
+
+      <a-asset-item id="get" src="assets/blessing.ogg" preload="auto" response-type="arraybuffer"> </a-asset-item>
+      <!-- Sound Effect from P0ss <a href="https://opengameart.org/content/spell-sounds-starter-pack">OpenGameArt</a> -->
+
       <a-asset-item id="red-sword" src="assets/red-sword.glb"> </a-asset-item>
       <!-- "Shattered crystal sword" (https://skfb.ly/ovwDV) by Julien Schoots is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). CC licence -->
       
@@ -85,8 +94,8 @@
       <a-asset-item id="second-island" src="assets/second_island.glb"> </a-asset-item>
       <!-- "Floating island" (https://skfb.ly/ouEVX) by Una.K.Carlstrøm is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
 
-
-
+      <a-asset-item id="epic-music" src="assets/epic-music.mp3"> </a-asset-item>
+      <!-- Music by <a href="https://pixabay.com/fr/users/paulyudin-27739282/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=157062">Pavel Bekirov</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=157062">Pixabay</a> -->
     </a-assets>
 
     <template v-if="allAssetsLoaded">

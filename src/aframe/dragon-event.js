@@ -16,6 +16,11 @@ AFRAME.registerComponent("dragon-event", {
       );
       // Déclenchez l'apparition d'un texte de victoire après la disparition du dragon, avec un délai de 8 secondes.
       el.sceneEl.querySelector("#victory-text").setAttribute("visible", true);
+
+      //déclencher la musique
+      el.sceneEl.querySelector("#epicmusic").components.sound.playSound();
+      //stop la harp
+      el.sceneEl.querySelector("#harp").components.sound.stopSound();
     });
   },
 });

@@ -18,7 +18,7 @@
 <template>
   <div id="onboarding" v-if="showOnboarding">
     <div>
-      <h1>A-Frame + Vite + Vue Boilerplate</h1>
+      <h1 id="title">The Dragon Menace</h1>
       <p v-if="!loaded">loading...</p>
       <button v-if="loaded" @click="enterScene()">Enter scene</button>
       <div class="licences">
@@ -96,6 +96,11 @@
 </template>
 
 <style scoped>
+
+#title {
+  font-size: 2rem;
+  color: lightyellow;
+}
 
 #danger {
   color: lightpink;
